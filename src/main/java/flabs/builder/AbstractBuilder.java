@@ -43,10 +43,7 @@ public abstract class AbstractBuilder<T, X extends AbstractBuilder<T, ?>> implem
         return true;
     }
 
-    @Deprecated
-    protected T newInstance() {
-        throw new RuntimeException("this method is deprecated");
-    }
+
 
     public <P> X lookup(Accessor<T, P> accessor, LookupService<P, P> lookupService) {
         final P value = accessor.get(template);

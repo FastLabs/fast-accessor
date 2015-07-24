@@ -1,5 +1,0 @@
-package flabs.functional;
-
-
-public interface Predicate <T> extends Function<T, Boolean> {
-}

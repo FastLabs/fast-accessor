@@ -1,4 +1,4 @@
-package flabs.functional;
+package flabs.utils;
 
 
 /**
@@ -11,7 +11,7 @@ public class Either<A,B> {
     private final B right;
 
     private Either(A left,  B right) {
-        Preconditions.checkArgument((left != null && right == null) || (left == null && right != null)); 
+        Preconditions.checkArgument((left != null && right == null) || (left == null && right != null));
         this.left = left;
         this.right = right;
     }

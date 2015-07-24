@@ -1,16 +1,11 @@
 package flabs.accessor;
 
 
-import com.db.treasury.tch.core.beans.domain.Amount;
-import com.db.treasury.tch.core.beans.domain.positionbalance.TdhPositionBalance;
+
+import flabs.test.common.model.amount.Amount;
 import org.junit.Test;
 
-import static com.db.treasury.tch.core.beans.domain.Amount.Fields.amount;
-import static com.db.treasury.tch.core.beans.domain.Amount.Fields.currency;
-import static com.db.treasury.tch.core.beans.domain.Currency.Fields.currencyCode;
-import static com.db.treasury.tch.core.beans.domain.Currency.newCurrency;
-import static com.db.treasury.tch.core.beans.domain.positionbalance.TdhPositionBalance.Fields.ifrsValuation;
-import static com.db.treasury.tch.core.beans.domain.positionbalance.TdhPositionBalance.newPositionBalance;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 

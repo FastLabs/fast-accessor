@@ -1,17 +1,11 @@
 package flabs.accessor;
 
 
-import com.db.treasury.tch.core.beans.domain.positionbalance.TdhPositionBalance;
+
 import org.junit.Test;
 
-import static com.db.treasury.tch.core.beans.domain.Amount.Fields.currency;
-import static com.db.treasury.tch.core.beans.domain.Amount.newAmount;
-import static com.db.treasury.tch.core.beans.domain.Currency.Fields.currencyCode;
-import static com.db.treasury.tch.core.beans.domain.Currency.Fields.currencyId;
-import static com.db.treasury.tch.core.beans.domain.Currency.newCurrency;
-import static com.db.treasury.tch.core.beans.domain.positionbalance.TdhPositionBalance.Fields.mtmAmount;
-import static com.db.treasury.tch.core.beans.domain.positionbalance.TdhPositionBalance.newPositionBalance;
-import static com.db.treasury.tch.core.utils.accessor.TransformAccessors.$;
+
+import static flabs.accessor.TransformAccessors.$;
 import static org.junit.Assert.assertEquals;
 
 public class TransformAccessorsTest {

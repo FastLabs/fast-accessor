@@ -1,4 +1,4 @@
-package flabs.functional;
+package flabs.utils;
 
 /**
  * Copy of some methods from Guava in order not to introduce dependency on it here 
