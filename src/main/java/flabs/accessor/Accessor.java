@@ -35,7 +35,7 @@ public class Accessor<T, P> implements AccessibleField<T, P>, Settable<T, P> {
 
     public P defaultValue() {
         if (defaulter != null) {
-            defaulter.call();
+            return defaulter.call();
         }
         return null;
     }

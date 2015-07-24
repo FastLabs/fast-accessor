@@ -48,21 +48,27 @@ public class PipeAccessor<T, P> implements AccessibleField<T, P> {
 
     @Override
     public void set(T destination, P value) {
-    	Object x = destination;
-        if (x != null) {        
-        	if(pipe.size()==1){
-        		AccessibleField f = pipe.get(0);  
-        		f.set(destination, value);
-        	}else{
-        		AccessibleField settableField = pipe.get(pipe.size()-1);
-                for (int i=0;i<pipe.size()-1;i++) {
-                	AccessibleField  field = pipe.get(i);                	
-                	x = field.get(x);            	
-                	if(x == null)
-                		return;            	
+        Object x = destination;
+        if (x != null) {
+            if (pipe.size() == 1) {
+                final AccessibleField f = pipe.get(0);
+                f.set(destination, value);
+            } else {
+                final AccessibleField settableField = pipe.get(pipe.size() - 1);
+                for (int i = 0; i < pipe.size() - 1; i++) {
+                    AccessibleField field = pipe.get(i);
+                    x = field.get(x);
+                    if (x == null) {
+                        x = field.defaultValue();
+                        if (x == null) {
+                            return;
+                        } else {
+                            field.set(destination, x);
+                        }
+                    }
                 }
                 settableField.set(x, value);
-        	}
+            }
         }
     }
 
@@ -77,5 +83,10 @@ public class PipeAccessor<T, P> implements AccessibleField<T, P> {
     public PipeAccessor<T, P> take(AccessibleField<?, ?> next) {    	
         pipe.add(next);
         return this;
+    }
+
+    @Override
+    public P defaultValue() {
+        return null;
     }
 }
