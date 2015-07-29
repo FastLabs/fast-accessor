@@ -9,8 +9,6 @@ import java.sql.Timestamp;
 import java.util.Date;
 
 
-
-
 public class ToTimestampAccessor<T> extends ProxyAccessor<T, Date, Timestamp> {
     public ToTimestampAccessor(AccessibleField<T, Date> accessor) {
         super(accessor);
