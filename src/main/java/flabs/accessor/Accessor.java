@@ -13,6 +13,7 @@ public class Accessor<T, P> implements AccessibleField<T, P>, Settable<T, P> {
     Gettable<T, P> getter;
     Settable<T, P> setter;
     Action<P> defaulter;
+    private final boolean isCollection;
     /**
      * Name is used as documentation only, for rule based applications
      * it is required a human readable description of the field
@@ -22,11 +23,13 @@ public class Accessor<T, P> implements AccessibleField<T, P>, Settable<T, P> {
     public Accessor(Gettable<T, P> getter
             , Settable<T, P> setter
             , Action<P> defaulter
-            , String name) {
+            , String name
+            , boolean isCollection) {
         this.getter = getter;
         this.setter = setter;
         this.defaulter = defaulter;
         this.name = name;
+        this.isCollection = isCollection;
     }
 
     public String getName() {
@@ -69,6 +72,7 @@ public class Accessor<T, P> implements AccessibleField<T, P>, Settable<T, P> {
         private Settable<T, P> setter;
         private Action<P> defaulter;
         private String name;
+        private boolean isCollection;
 
         public Builder(){}
 
@@ -80,7 +84,7 @@ public class Accessor<T, P> implements AccessibleField<T, P>, Settable<T, P> {
         }
 
         public Accessor<T, P> end() {
-            return new Accessor<>(getter, setter, defaulter, name);
+            return new Accessor<>(getter, setter, defaulter, name, isCollection);
         }
 
         public Builder<T, P> withGetter(Gettable<T, P> getter) {
@@ -100,6 +104,11 @@ public class Accessor<T, P> implements AccessibleField<T, P>, Settable<T, P> {
 
         public Builder<T, P> withName(String name) {
             this.name = name;
+            return this;
+        }
+
+        public Builder<T, P> asCollection() {
+            this.isCollection = true;
             return this;
         }
 

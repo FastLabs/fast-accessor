@@ -7,4 +7,8 @@ import flabs.functional.Settable;
 
 public interface AccessibleField<T, P> extends Gettable<T, P>, Settable<T, P>, Nameable {
     P defaultValue();
+
+    default boolean isCollection() {
+        return false;
+    }
 }

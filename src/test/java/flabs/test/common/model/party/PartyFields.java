@@ -3,7 +3,11 @@ package flabs.test.common.model.party;
 
 import flabs.accessor.Accessor;
 import flabs.accessor.Accessors;
+import flabs.functional.Action;
 import flabs.test.common.model.amount.Amount;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PartyFields {
 
@@ -18,4 +22,10 @@ public class PartyFields {
             .withSetter(Party::setTotalTurnover)
             .withGetter(Party::getTotalTurnover)
             .withDefault(Amount::new);
+
+    public static final Accessor<Party, List<String>> partyClassifications = Accessors.<Party, String, List<String>>asList()
+            .withName("Classifications")
+            .withGetter(Party::getClassfications)
+            .withSetter(Party::setClassfications)
+            .withDefault(ArrayList<String>::new);
 }

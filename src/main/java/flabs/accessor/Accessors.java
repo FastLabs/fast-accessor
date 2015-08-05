@@ -1,5 +1,6 @@
 package flabs.accessor;
 
+import java.util.Collection;
 import java.util.Date;
 
 public class Accessors {
@@ -14,6 +15,10 @@ public class Accessors {
     
     public static <T> Accessor.Builder<T, Integer> asInt() {
         return new Accessor.Builder<>();
+    }
+
+    public static <T, I,  C extends Collection<I>> Accessor.Builder<T, C > asList() {
+        return new Accessor.Builder<T, C>().asCollection();
     }
     
     public static <T> Accessor.Builder<T, Boolean> asBool() {
