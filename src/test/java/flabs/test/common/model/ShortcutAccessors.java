@@ -5,6 +5,7 @@ import flabs.accessor.AccessibleField;
 import flabs.accessor.Accessors;
 import flabs.functional.Gettable;
 import flabs.test.common.model.amount.Amount;
+import org.junit.Test;
 
 public class ShortcutAccessors {
 
