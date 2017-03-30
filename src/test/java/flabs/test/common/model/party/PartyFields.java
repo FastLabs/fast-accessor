@@ -3,7 +3,6 @@ package flabs.test.common.model.party;
 
 import flabs.accessor.Accessor;
 import flabs.accessor.Accessors;
-import flabs.functional.Action;
 import flabs.test.common.model.amount.Amount;
 
 import java.util.ArrayList;

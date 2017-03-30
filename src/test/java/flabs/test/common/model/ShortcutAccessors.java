@@ -16,19 +16,16 @@ public class ShortcutAccessors {
      */
     @SafeVarargs
     public static <T> AccessibleField<T, String> currencyId(final AccessibleField<T, Amount>... accessors) {
-        return Accessors.<T>asString().withGetter(new Gettable<T, String>() {
-            @Override
-            public String get(T target) {
-                if (accessors != null && target != null) {
-                    for (AccessibleField<T, Amount> accessor : accessors) {
-                        final Amount amount = accessor.get(target);
-                        if (amount != null && amount.getCurrency() != null) {
-                            return amount.getCurrency().getId();
-                        }
+        return Accessors.<T>asString().withGetter(target -> {
+            if (accessors != null && target != null) {
+                for (AccessibleField<T, Amount> accessor : accessors) {
+                    final Amount amount = accessor.get(target);
+                    if (amount != null && amount.getCurrency() != null) {
+                        return amount.getCurrency().getId();
                     }
                 }
-                return null;
             }
+            return null;
         }).end();
     }
 
@@ -38,17 +35,14 @@ public class ShortcutAccessors {
      * @param accessor Accessible field to obtain the amount value
      */
     public static <T> AccessibleField<T, Number> amountValue(final AccessibleField<T, Amount> accessor) {
-        return Accessors.<T>asNumber().withGetter(new Gettable<T, Number>() {
-            @Override
-            public Number get(T target) {
-                if (accessor != null && target != null) {
-                    final Amount amount = accessor.get(target);
-                    if (amount != null) {
-                        return amount.getAmount();
-                    }
+        return Accessors.<T>asNumber().withGetter(target -> {
+            if (accessor != null && target != null) {
+                final Amount amount = accessor.get(target);
+                if (amount != null) {
+                    return amount.getAmount();
                 }
-                return null;
             }
+            return null;
         }).end();
     }
 }

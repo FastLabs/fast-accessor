@@ -1,24 +1,24 @@
 package flabs.accessor;
 
 
-import flabs.functional.Action;
 import flabs.functional.Nameable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
 
 import static flabs.accessor.TransformAccessors.$;
 
 
 
 public class MapAccessor {
-    private static Action<Map> mapFactory = HashMap::new;
-    private static Action<ArrayList> listFactory = ArrayList::new;
+    private static Supplier<Map> mapFactory = HashMap::new;
+    private static Supplier<ArrayList> listFactory = ArrayList::new;
 
 
-    private static <T> Accessor<Map, T> map$(Nameable name, Action<T> defaults) { //TODO: replace the actions
+    private static <T> Accessor<Map, T> map$(Nameable name, Supplier<T> defaults) {
         return map$(name.getName(), defaults);
     }
 
@@ -54,7 +54,7 @@ public class MapAccessor {
     }
 
     @SuppressWarnings("unchecked")
-    public static <T> Accessor<Map, T> map$(final String fieldName, Action<T> defaulter) {
+    public static <T> Accessor<Map, T> map$(final String fieldName, Supplier<T> defaulter) {
         return new Accessor.Builder<Map, T>()
                 .withName(fieldName)
                 .withSetter((bucket, value) -> bucket.put(fieldName, value))

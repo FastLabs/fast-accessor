@@ -1,9 +1,10 @@
 package flabs.accessor;
 
 
-import flabs.functional.Action;
 import flabs.functional.Gettable;
 import flabs.functional.Settable;
+
+import java.util.function.Supplier;
 
 /**
  * @param <T> flabs.accessor for type
@@ -12,7 +13,7 @@ import flabs.functional.Settable;
 public class Accessor<T, P> implements AccessibleField<T, P>, Settable<T, P> {
     Gettable<T, P> getter;
     Settable<T, P> setter;
-    Action<P> defaulter;
+    Supplier<P> defaulter;
     private final boolean isCollection;
     /**
      * Name is used as documentation only, for rule based applications
@@ -22,7 +23,7 @@ public class Accessor<T, P> implements AccessibleField<T, P>, Settable<T, P> {
 
     public Accessor(Gettable<T, P> getter
             , Settable<T, P> setter
-            , Action<P> defaulter
+            , Supplier<P> defaulter
             , String name
             , boolean isCollection) {
         this.getter = getter;
@@ -38,7 +39,7 @@ public class Accessor<T, P> implements AccessibleField<T, P>, Settable<T, P> {
 
     public P defaultValue() {
         if (defaulter != null) {
-            return defaulter.call();
+            return defaulter.get();
         }
         return null;
     }
@@ -70,7 +71,7 @@ public class Accessor<T, P> implements AccessibleField<T, P>, Settable<T, P> {
     public static class Builder<T, P> {
         private Gettable<T, P> getter;
         private Settable<T, P> setter;
-        private Action<P> defaulter;
+        private Supplier<P> defaulter;
         private String name;
         private boolean isCollection;
 
@@ -97,7 +98,7 @@ public class Accessor<T, P> implements AccessibleField<T, P>, Settable<T, P> {
             return this;
         }
 
-        public Accessor<T, P> withDefault(Action<P> defaultGen) {
+        public Accessor<T, P> withDefault(Supplier<P> defaultGen) {
             defaulter = defaultGen;
             return end();
         }
@@ -114,12 +115,7 @@ public class Accessor<T, P> implements AccessibleField<T, P>, Settable<T, P> {
 
 
         public Accessor<T, P> withDefault(final P defaultVal) {
-            return withDefault(new Action<P>() {
-                @Override
-                public P call() {
-                    return defaultVal;
-                }
-            });
+            return withDefault(()->defaultVal);
         }
     }
 
