@@ -24,7 +24,7 @@ public class PartyFields {
 
     public static final Accessor<Party, List<String>> partyClassifications = Accessors.<Party, String, List<String>>asList()
             .withName("Classifications")
-            .withGetter(Party::getClassfications)
-            .withSetter(Party::setClassfications)
+            .withGetter(Party::getClassifications)
+            .withSetter(Party::setClassifications)
             .withDefault(ArrayList<String>::new);
 }

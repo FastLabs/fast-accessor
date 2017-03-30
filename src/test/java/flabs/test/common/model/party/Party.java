@@ -4,25 +4,24 @@ package flabs.test.common.model.party;
 import flabs.builder.AbstractBuilder;
 import flabs.test.common.model.amount.Amount;
 
-import java.util.Collection;
 import java.util.List;
 
 public class Party {
 
     private String id;
     private Amount totalTurnover;
-    private List<String> classfications;
+    private List<String> classifications;
 
 
     private Party() {
     }
 
-    public List<String> getClassfications() {
-        return classfications;
+    public List<String> getClassifications() {
+        return classifications;
     }
 
-    public void setClassfications(List<String> classif) {
-        this.classfications = classif;
+    public void setClassifications(List<String> classif) {
+        this.classifications = classif;
     }
 
     public static Builder newParty() {

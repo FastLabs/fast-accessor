@@ -1,6 +1,9 @@
-package flabs.accessor;
+package flabs.accessor.ext.map;
 
 
+import flabs.accessor.AccessibleField;
+import flabs.accessor.Accessor;
+import flabs.accessor.PipeAccessor;
 import flabs.functional.Nameable;
 
 import java.util.ArrayList;
@@ -9,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import static flabs.accessor.TransformAccessors.$;
+import static flabs.accessor.ext.NavAccessors.$;
 
 
 

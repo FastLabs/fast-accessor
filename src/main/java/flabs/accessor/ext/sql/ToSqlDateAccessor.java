@@ -1,4 +1,4 @@
-package flabs.accessor.util;
+package flabs.accessor.ext.sql;
 
 
 

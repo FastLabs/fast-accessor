@@ -1,4 +1,4 @@
-package flabs.accessor.util;
+package flabs.accessor.ext.sql;
 
 
 
@@ -25,11 +25,11 @@ public class ToTimestampAccessor<T> extends ProxyAccessor<T, Date, Timestamp> {
 
     @Override
     public void set(T destination, Timestamp value) {
-        throw new UnsupportedOperationException("not yet implemented");
+        accessor.set(destination, value);
     }
 
     @Override
     public Timestamp defaultValue() {
-        throw new UnsupportedOperationException("not yet implemented");
+        return new Timestamp(new Date().getTime());
     }
 }

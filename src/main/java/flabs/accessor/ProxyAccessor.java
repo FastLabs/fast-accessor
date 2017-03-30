@@ -9,6 +9,6 @@ public abstract class ProxyAccessor<T, I, O> implements AccessibleField<T, O> {
 
     @Override
     public String getName() {
-        return null;
+        return accessor.getName();
     }
 }

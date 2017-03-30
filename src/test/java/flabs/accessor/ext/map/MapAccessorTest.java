@@ -1,4 +1,4 @@
-package flabs.accessor;
+package flabs.accessor.ext.map;
 
 
 import static flabs.accessor.CollectionAccessor.add;
@@ -6,14 +6,14 @@ import static flabs.test.common.model.amount.CurrencyFilelds.crcyId;
 import static flabs.test.common.model.party.PartyFields.partyClassifications;
 import static org.junit.Assert.*;
 
-import flabs.test.common.model.party.PartyFields;
+import flabs.accessor.AccessibleField;
 import org.junit.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static flabs.accessor.MapAccessor.map$;
-import static flabs.accessor.TransformAccessors.$;
+import static flabs.accessor.ext.map.MapAccessor.map$;
+import static flabs.accessor.ext.NavAccessors.$;
 import static flabs.test.common.model.amount.AmountFields.crcy;
 import static flabs.test.common.model.amount.CurrencyFilelds.crcyCd;
 

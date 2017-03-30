@@ -1,5 +1,7 @@
 package flabs.accessor;
 
+import flabs.accessor.ext.ConvertAccessors;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +13,7 @@ public class PipeAccessor<T, P> implements AccessibleField<T, P> {
         this.pipe.add(current);
     }
 
-    PipeAccessor(AccessibleField current, AccessibleField next) {
+    public PipeAccessor(AccessibleField current, AccessibleField next) {
         this.pipe.add(current);
         this.pipe.add(next);
     }
@@ -73,7 +75,7 @@ public class PipeAccessor<T, P> implements AccessibleField<T, P> {
     }
 
     public AccessibleField<T, Number> asNumber() {
-        return TransformAccessors.asNumber(this);
+        return ConvertAccessors.asNumber(this);
     }
 
     public List<AccessibleField<?,?>> getPipe(){

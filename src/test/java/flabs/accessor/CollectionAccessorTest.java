@@ -5,7 +5,7 @@ import flabs.test.common.model.party.Party;
 import org.junit.Test;
 
 import static flabs.accessor.CollectionAccessor.add;
-import static flabs.accessor.TransformAccessors.$;
+import static flabs.accessor.ext.NavAccessors.$;
 import static flabs.test.common.model.party.Party.newParty;
 import static flabs.test.common.model.party.PartyFields.partyClassifications;
 import static org.junit.Assert.assertEquals;
@@ -18,6 +18,6 @@ public class CollectionAccessorTest {
                 .$($(partyClassifications, add()), "abc")
                 .$($(partyClassifications, add()), "cde")
                 .build();
-        assertEquals("[abc, cde]", p.getClassfications().toString());
+        assertEquals("[abc, cde]", p.getClassifications().toString());
     }
 }

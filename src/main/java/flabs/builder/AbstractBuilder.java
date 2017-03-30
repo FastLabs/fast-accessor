@@ -2,7 +2,7 @@ package flabs.builder;
 
 
 import flabs.accessor.Accessor;
-import flabs.accessor.LookupService;
+import flabs.functional.Gettable;
 import flabs.functional.Settable;
 
 /**
@@ -65,12 +65,11 @@ public abstract class AbstractBuilder<T, X extends AbstractBuilder<T, ?>> implem
         return true;
     }
 
-
-//TODO: move this outside, it may be used as accessor
-    public <P> X lookup(Accessor<T, P> accessor, LookupService<P, P> lookupService) {
+    @Deprecated
+    public <P> X lookup(Accessor<T, P> accessor, Gettable<P, P> provider) {
         final P value = accessor.get(template);
         if (value != null) {
-            P p = lookupService.find(value);
+            final P p = provider.get(value);
             if (p != null) {
                 accessor.set(template, p);
             }

@@ -1,13 +1,13 @@
-package flabs.accessor.ext;
+package flabs.accessor.ext.json;
 
 
 import flabs.accessor.Accessor;
 import io.vertx.core.json.JsonObject;
 import org.junit.Test;
 
-import static flabs.accessor.TransformAccessors.$;
-import static flabs.accessor.ext.JsonAccessor.js$;
-import static flabs.accessor.ext.JsonAccessor.newJson;
+import static flabs.accessor.ext.NavAccessors.$;
+import static flabs.accessor.ext.json.JsonAccessor.js$;
+import static flabs.accessor.ext.json.JsonAccessor.newJson;
 
 public class JsonObjectTest {
 

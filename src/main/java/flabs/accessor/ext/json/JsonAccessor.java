@@ -1,4 +1,4 @@
-package flabs.accessor.ext;
+package flabs.accessor.ext.json;
 
 
 import flabs.accessor.AccessibleField;
@@ -12,11 +12,11 @@ import java.util.function.Supplier;
 
 
 public interface JsonAccessor<T> extends AccessibleField<JsonObject, T> {
-    Supplier<JsonObject> mapFactory = JsonObject::new;
-    Supplier<JsonArray> listFactory = JsonArray::new;
+    Supplier<JsonObject> objFactory = JsonObject::new;
+    Supplier<JsonArray> arrFactory = JsonArray::new;
 
 
-     static <T> Accessor<JsonObject, T> js$(Nameable name, Supplier<T> defaults) {
+    static <T> Accessor<JsonObject, T> js$(Nameable name, Supplier<T> defaults) {
         return js$(name.getName(), defaults);
     }
 
@@ -33,12 +33,20 @@ public interface JsonAccessor<T> extends AccessibleField<JsonObject, T> {
                 .withDefault(defaulter);
     }
 
+    static Accessor<JsonObject, JsonObject> js$(final String fieldName) {
+        return js$(fieldName, objFactory);
+    }
+
+    static Accessor<JsonObject, JsonArray> jsArr$(final String fieldName) {
+        return js$(fieldName, arrFactory);
+    }
+
     static Builder newJson() {
         return new Builder(new JsonObject(), null);
     }
 
     class Builder extends AbstractBuilder<JsonObject, Builder> {
-         Builder(JsonObject template, Accessor<JsonObject, ?>[] mandatory) {
+        Builder(JsonObject template, Accessor<JsonObject, ?>[] mandatory) {
             super(template, mandatory);
         }
 

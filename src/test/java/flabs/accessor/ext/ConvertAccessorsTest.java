@@ -1,22 +1,23 @@
-package flabs.accessor;
+package flabs.accessor.ext;
 
 
 import flabs.test.common.model.amount.Amount;
 import flabs.test.common.model.amount.Currency;
 import org.junit.Test;
 
-import static flabs.accessor.TransformAccessors.$;
+import static flabs.accessor.ext.NavAccessors.$;
 import static flabs.test.common.model.amount.AmountFields.amount;
 import static flabs.test.common.model.amount.AmountFields.crcy;
+import static flabs.test.common.model.amount.Currency.newCurrency;
 import static flabs.test.common.model.amount.CurrencyFilelds.crcyCd;
 import static org.junit.Assert.assertEquals;
 
-public class TransformAccessorsTest {
+public class ConvertAccessorsTest {
     @Test
-    public void testPipeAccessor() {
+    public void testAsEnumAccessor() {
         final Amount a = Amount.newAmount()
                 .with(amount, 10.0)
-                .with(crcy, Currency.newCurrency("1", "usd"))
+                .with(crcy, newCurrency("1", "usd"))
                 .build();
 
 

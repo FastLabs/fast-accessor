@@ -1,7 +1,5 @@
 package flabs.accessor;
 
-import flabs.functional.Settable;
-
 import java.util.Collection;
 
 
