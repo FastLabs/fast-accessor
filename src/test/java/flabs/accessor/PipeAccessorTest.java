@@ -6,6 +6,7 @@ import flabs.test.common.model.party.Party;
 import org.junit.Test;
 
 import static flabs.test.common.model.amount.Amount.newAmount;
+import static flabs.test.common.model.amount.Amount.update;
 import static flabs.test.common.model.amount.AmountFields.amount;
 import static flabs.test.common.model.amount.AmountFields.crcy;
 import static flabs.test.common.model.amount.Currency.newCurrency;
@@ -77,5 +78,21 @@ public class PipeAccessorTest {
         PipeAccessor<Amount, Number> y = new PipeAccessor<Amount, Number>(amount);
         y.set(subjectAmount, 20.0);
         assertEquals(20.0, subjectAmount.getAmount());
+    }
+
+    @Test
+    public void testShorter() {
+        Amount subjectAmount = newAmount()
+                .$(amount, 10.0)
+                .$(crcy, newCurrency()
+                        .$(crcyCd, "USD"))
+                .build();
+
+        final Amount amnt = update(subjectAmount)
+                .$(amount, 11)
+                .build();
+
+        assertEquals(11, amnt.getAmount());
+
     }
 }

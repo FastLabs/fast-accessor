@@ -12,6 +12,9 @@ public class Amount {
     public static Builder newAmount() {
         return new Builder(new Amount());
     }
+    public static Builder update(Amount amount ) {
+        return new Builder(amount);
+    }
 
     public Amount() {
     }
@@ -33,8 +36,8 @@ public class Amount {
     }
 
     public static class Builder extends AbstractBuilder<Amount, Builder> {
-
-        public Builder(Amount template, Accessor<Amount, ?>... mandatory) {
+        @SafeVarargs
+        Builder(Amount template, Accessor<Amount, ?>... mandatory) {
             super(template, mandatory);
         }
 

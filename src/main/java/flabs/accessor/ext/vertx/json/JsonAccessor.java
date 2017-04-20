@@ -1,4 +1,4 @@
-package flabs.accessor.ext.json;
+package flabs.accessor.ext.vertx.json;
 
 
 import flabs.accessor.AccessibleField;
@@ -41,7 +41,7 @@ public interface JsonAccessor<T> extends AccessibleField<JsonObject, T> {
         return js$(fieldName, arrFactory);
     }
 
-    static Builder newJson() {
+    static Builder newJs() {
         return new Builder(new JsonObject(), null);
     }
 
